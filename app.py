@@ -6,7 +6,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import time
 import datetime
 import MySQLdb.cursors
-import re
+# import re
 
 app = Flask(__name__)
 
@@ -15,7 +15,7 @@ app.secret_key = 'a'
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = '24116718@Mm'
-app.config['MYSQL_DB'] = 'newDB'
+app.config['MYSQL_DB'] = 'bank'
 
 mysql = MySQL(app)
 ts = time.time()
@@ -34,7 +34,6 @@ def index():
 
 @app.route('/transaction', methods=['GET', 'POST'])
 def make():
-    msg = 'Please enter details to be added'
     if request.method == 'POST' and 'cid' in request.form and 'cname' in request.form and 'cemail' in request.form and 'cbal' in request.form:
         user = request.form['cname']
         id = request.form['cid']
